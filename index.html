@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <input type="text" placeholder="What do you want to save or remove?" id="input-el">
+    <button class="save" id="save-paper-btn" onclick="savePaper()">Save Paper</button>
+    <button class="save" id="save-researcher-btn" onclick="saveResearcher()">Save Researcher</button>
+    <button class="remove" id="remove-paper-btn" onclick="removePaper()">Remove Paper</button>
+    <button class="remove" id="remove-researcher-btn" onclick="removeResearcher()">Remove Researcher</button>
+    
+    <div id="display-holder">
+
+        <div class="display-box" id="display-papers">Papers To Read</div>
+        <div class="display-box" id="display-researchers">Researchers You Follow</div>
+
+    </div>
+
+    <a href="https://docs.google.com/spreadsheets/d/17G--y72zW98imF1xIYVnxS8gODu72VH4Rydd0J0PLSI/edit?usp=sharing" target="_blank">Go To Google Sheets To Add Notes</a>
+
+    <script src="index.js"></script>
+    
+</body>
+</html>
