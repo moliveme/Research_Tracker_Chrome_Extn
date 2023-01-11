@@ -75,29 +75,45 @@ function removeResearcher() {
 
 function updatePaperDisplay() {
 
-    displayTxt = ""
-
     allPapers.forEach((pEl) => {
 
-        displayTxt += "\n" + <a href="google.com">hey</a>
+        displayTxt += `
+        <li>
+            <a target='_blank' href='${pEl}'>
+                ${pEl}
+            </a>
+        </li>`
 
     });
 
-    document.getElementById("display-papers").innerText = "Papers To Read\n" + displayTxt
+    document.getElementById("display-papers").innerHTML = "Papers To Read\n" + displayTxt
+
+    displayTxt = ""
+
+    //clear out input field
+    document.getElementById("input-el").value = ""
 
 }
 
 function updateResearcherDisplay() {
 
-    displayTxt = ""
-
     allResearchers.forEach((rEl) => {
 
-        displayTxt += "\n" + rEl
+        displayTxt += `
+        <li>
+            <a target='_blank' href='${rEl}'>
+                ${rEl}
+            </a>
+        </li>`
 
     });
 
-    document.getElementById("display-researchers").innerText = "Researchers You Follow\n" + displayTxt
+    document.getElementById("display-researchers").innerHTML = "Researchers You Follow\n" + displayTxt
+
+    displayTxt = ""
+
+    //clear out input field
+    document.getElementById("input-el").value = ""
 
 }
 
@@ -105,3 +121,10 @@ function deleteAll() {
     allLinks = []
     updateDisplay()
 }
+
+// can use event listeners instead of onclick and 
+// function call
+// const can also be used to define vars instead of let
+// but const vars' value cannot be reassigned: so
+// ...it tells the user/programmer that a variable doesn't
+// chang in the program

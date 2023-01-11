@@ -37,7 +37,7 @@ input {
 }
 
 .save:hover {
-    background-color: rgb(131, 145, 130);
+    background-color: rgb(168, 177, 167);
 }
 
 .remove:hover {
@@ -59,7 +59,14 @@ input {
     margin-right: 10px;
     background-color: rgb(135, 169, 135);
     overflow: scroll;
-    padding: 20px;
     border-radius: 10px;
     color: rgb(247, 241, 233);
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a {
+    color: rgb(28, 64, 57);
 }

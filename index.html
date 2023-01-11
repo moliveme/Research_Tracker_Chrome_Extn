@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <input type="text" placeholder="What do you want to save or remove?" id="input-el">
+    <input type="text" placeholder="Type the URL you want to save or remove..." id="input-el">
     <button class="save" id="save-paper-btn" onclick="savePaper()">Save Paper</button>
     <button class="save" id="save-researcher-btn" onclick="saveResearcher()">Save Researcher</button>
     <button class="remove" id="remove-paper-btn" onclick="removePaper()">Remove Paper</button>
@@ -17,8 +17,16 @@
     
     <div id="display-holder">
 
-        <div class="display-box" id="display-papers">Papers To Read</div>
-        <div class="display-box" id="display-researchers">Researchers You Follow</div>
+        <div class="display-box">
+            <ul id="display-papers">
+                Papers To Read
+            </ul>
+        </div>
+        <div class="display-box">
+            <ul id="display-researchers">
+                Researchers You Follow
+            </ul>
+        </div>
 
     </div>
 
