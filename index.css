@@ -4,6 +4,7 @@ body {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: antiquewhite;
+    min-width: 604px;
 }
 
 input {
