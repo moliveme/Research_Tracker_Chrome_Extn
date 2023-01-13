@@ -5,6 +5,8 @@ let currentResearcher = ""
 
 let displayTxt = ""
 
+let pEl, rEl
+
 function start() {
 
     if (localStorage.getItem("allPapers") === null) {
@@ -28,11 +30,13 @@ const savePaper = document.getElementById("save-paper-btn")
 
 savePaper.addEventListener("click", function() {
 
-    currentPaper = document.getElementById("input-el").value
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
-    if (currentPaper !== "") {
-        allPapers.push(currentPaper)
-    }
+        currentPaper = tabs[0].url
+
+    })
+
+    allPapers.push(currentPaper)
 
     updatePaperDisplay()
 
@@ -42,11 +46,13 @@ const saveResearcher = document.getElementById("save-researcher-btn")
 
 saveResearcher.addEventListener("click", function() {
 
-    currentResearcher = document.getElementById("input-el").value
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
-    if (currentResearcher !== "") {
-        allResearchers.push(currentResearcher)
-    }
+        currentResearcher = tabs[0].url
+
+    })
+
+    allResearchers.push(currentResearcher)
 
     updateResearcherDisplay()
 
@@ -56,7 +62,11 @@ const removePaper = document.getElementById("remove-paper-btn")
 
 removePaper.addEventListener("click", function() {
 
-    currentPaper = document.getElementById("input-el").value
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+        currentPaper = tabs[0].url
+
+    })
 
     for (let i = 0; i < allPapers.length; i++) {
         if (currentPaper === allPapers[i]) {
@@ -79,7 +89,11 @@ const removeResearcher = document.getElementById("remove-researcher-btn")
 
 removeResearcher.addEventListener("click", function() {
 
-    currentResearcher = document.getElementById("input-el").value
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+        currentResearcher = tabs[0].url
+
+    })
 
     for (let i = 0; i < allResearchers.length; i++) {
         if (currentResearcher === allResearchers[i]) {
@@ -100,22 +114,20 @@ removeResearcher.addEventListener("click", function() {
 
 function updatePaperDisplay() {
 
-    console.log(allPapers[0])
+    console.log(allPapers[0]) // init
 
-    allPapers.forEach((pEl) => {
+    for (let i = 1; i < allPapers.length; i++) {
 
-        if (pEl !== "init") {
+        pEl = allPapers[i]
 
-            displayTxt += `
-                <li>
-                    <a target='_blank' href='${pEl}'>
-                        ${pEl}
-                    </a>
-                </li>`
+        displayTxt += `
+            <li>
+                <a target='_blank' href='${pEl}'>
+                    ${pEl}
+                </a>
+            </li>`
 
-        }
-
-    });
+    }
 
     document.getElementById("display-papers").innerHTML = "Papers To Read\n" + displayTxt
 
@@ -131,20 +143,15 @@ function updatePaperDisplay() {
 
 function updateResearcherDisplay() {
 
-    allResearchers.forEach((rEl) => {
-
-        if (rEl !== "init") {
-
-            displayTxt += `
-                <li>
-                    <a target='_blank' href='${rEl}'>
-                        ${rEl}
-                    </a>
-                </li>`
-
-        }
-
-    });
+    for (let i = 1; i < allResearchers.length; i++) {
+        rEl = allResearchers[i]
+        displayTxt += `
+            <li>
+                <a target='_blank' href='${rEl}'>
+                    ${rEl}
+                </a>
+            </li>`
+    }
 
     document.getElementById("display-researchers").innerHTML = "Researchers You Follow\n" + displayTxt
 
@@ -175,3 +182,6 @@ removeAll.addEventListener("click", function() {
 // but const vars' value cannot be reassigned: so
 // ...it tells the user/programmer that a variable doesn't
 // chang in the program
+
+// TODOs
+// save current tab rather than having to input URL!
