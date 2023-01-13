@@ -7,7 +7,9 @@ let currentResearcher = ""
 
 let displayTxt = ""
 
-function savePaper() {
+const savePaper = document.getElementById("save-paper-btn")
+
+savePaper.addEventListener("click", function() {
 
     currentPaper = document.getElementById("input-el").value
 
@@ -17,9 +19,25 @@ function savePaper() {
 
     updatePaperDisplay()
 
-}
+}) 
 
-function removePaper() {
+const saveResearcher = document.getElementById("save-researcher-btn")
+
+saveResearcher.addEventListener("click", function() {
+
+    currentResearcher = document.getElementById("input-el").value
+
+    if (currentResearcher !== "") {
+        allResearchers.push(currentResearcher)
+    }
+
+    updateResearcherDisplay()
+
+})
+
+const removePaper = document.getElementById("remove-paper-btn")
+
+removePaper.addEventListener("click", function() {
 
     currentPaper = document.getElementById("input-el").value
 
@@ -38,21 +56,11 @@ function removePaper() {
 
     updatePaperDisplay()
 
-}
+})
 
-function saveResearcher() {
+const removeResearcher = document.getElementById("remove-researcher-btn")
 
-    currentResearcher = document.getElementById("input-el").value
-
-    if (currentResearcher !== "") {
-        allResearchers.push(currentResearcher)
-    }
-
-    updateResearcherDisplay()
-
-}
-
-function removeResearcher() {
+removeResearcher.addEventListener("click", function() {
 
     currentResearcher = document.getElementById("input-el").value
 
@@ -71,7 +79,7 @@ function removeResearcher() {
 
     updateResearcherDisplay()
 
-}
+})
 
 function updatePaperDisplay() {
 
@@ -117,10 +125,16 @@ function updateResearcherDisplay() {
 
 }
 
-function deleteAll() {
-    allLinks = []
-    updateDisplay()
-}
+const removeAll = document.getElementById("remove-all-btn")
+
+removeAll.addEventListener("click", function() {
+
+    allPapers = []
+    allResearchers = []
+    updatePaperDisplay()
+    updateResearcherDisplay()
+    
+})
 
 // can use event listeners instead of onclick and 
 // function call

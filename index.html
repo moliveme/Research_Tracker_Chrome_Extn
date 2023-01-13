@@ -10,10 +10,10 @@
 <body>
 
     <input type="text" placeholder="Type the URL you want to save or remove..." id="input-el">
-    <button class="save" id="save-paper-btn" onclick="savePaper()">Save Paper</button>
-    <button class="save" id="save-researcher-btn" onclick="saveResearcher()">Save Researcher</button>
-    <button class="remove" id="remove-paper-btn" onclick="removePaper()">Remove Paper</button>
-    <button class="remove" id="remove-researcher-btn" onclick="removeResearcher()">Remove Researcher</button>
+    <button class="save" id="save-paper-btn">Save Paper</button>
+    <button class="save" id="save-researcher-btn">Save Researcher</button>
+    <button class="remove" id="remove-paper-btn">Remove Paper</button>
+    <button class="remove" id="remove-researcher-btn">Remove Researcher</button>
     
     <div id="display-holder">
 
@@ -30,7 +30,12 @@
 
     </div>
 
-    <a href="https://docs.google.com/spreadsheets/d/17G--y72zW98imF1xIYVnxS8gODu72VH4Rydd0J0PLSI/edit?usp=sharing" target="_blank">Go To Google Sheets To Add Notes</a>
+    <div id="bottom-flex">
+
+        <button id="remove-all-btn">Remove Everything</button>
+        <a style="margin-top: 10px;" href="https://docs.google.com/spreadsheets/d/17G--y72zW98imF1xIYVnxS8gODu72VH4Rydd0J0PLSI/edit?usp=sharing" target="_blank">Go To Google Sheets To Add Notes</a>
+        
+    </div>
 
     <script src="index.js"></script>
     
