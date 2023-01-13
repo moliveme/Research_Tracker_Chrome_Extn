@@ -7,18 +7,6 @@ body {
     min-width: 737px;
 }
 
-input {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    border: 3px solid rgb(170, 174, 170);
-    margin-bottom: 4px;
-    border-radius: 20px;
-    background-color: rgb(228, 222, 215);
-    font-size: 20px;
-
-}
-
 .save {
     background: rgb(188, 212, 201);
     color: rgb(21, 50, 37);

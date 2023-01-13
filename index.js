@@ -21,7 +21,6 @@ function start() {
 start()
 
 let allPapers = JSON.parse(localStorage.allPapers)
-console.log(allPapers)
 let allResearchers = JSON.parse(localStorage.allResearchers)
 updatePaperDisplay()
 updateResearcherDisplay()
@@ -33,12 +32,15 @@ savePaper.addEventListener("click", function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
         currentPaper = tabs[0].url
+        console.log(currentPaper)
+
+        console.log(allPapers)
+        allPapers.push(currentPaper)
+        console.log(allPapers)
+    
+        updatePaperDisplay()
 
     })
-
-    allPapers.push(currentPaper)
-
-    updatePaperDisplay()
 
 }) 
 
@@ -49,12 +51,15 @@ saveResearcher.addEventListener("click", function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
         currentResearcher = tabs[0].url
+        console.log(currentResearcher)
+
+        console.log(allResearchers)
+        allResearchers.push(currentResearcher)
+        console.log(allResearchers)
+    
+        updateResearcherDisplay()
 
     })
-
-    allResearchers.push(currentResearcher)
-
-    updateResearcherDisplay()
 
 })
 
@@ -66,22 +71,22 @@ removePaper.addEventListener("click", function() {
 
         currentPaper = tabs[0].url
 
-    })
-
-    for (let i = 0; i < allPapers.length; i++) {
-        if (currentPaper === allPapers[i]) {
-
-            continue
-
-        } else {
-            tempAr.push(allPapers[i])
+        for (let i = 0; i < allPapers.length; i++) {
+            if (currentPaper === allPapers[i]) {
+    
+                continue
+    
+            } else {
+                tempAr.push(allPapers[i])
+            }
         }
-    }
+    
+        allPapers = tempAr
+        tempAr = []
+    
+        updatePaperDisplay()
 
-    allPapers = tempAr
-    tempAr = []
-
-    updatePaperDisplay()
+    })
 
 })
 
@@ -93,30 +98,28 @@ removeResearcher.addEventListener("click", function() {
 
         currentResearcher = tabs[0].url
 
-    })
-
-    for (let i = 0; i < allResearchers.length; i++) {
-        if (currentResearcher === allResearchers[i]) {
-
-            continue
-
-        } else {
-            tempAr.push(allResearchers[i])
+        for (let i = 0; i < allResearchers.length; i++) {
+            if (currentResearcher === allResearchers[i]) {
+    
+                continue
+    
+            } else {
+                tempAr.push(allResearchers[i])
+            }
         }
-    }
+    
+        allResearchers = tempAr
+        tempAr = []
+    
+        updateResearcherDisplay()
 
-    allResearchers = tempAr
-    tempAr = []
-
-    updateResearcherDisplay()
+    })
 
 })
 
 function updatePaperDisplay() {
 
-    console.log(allPapers[0]) // init
-
-    for (let i = 1; i < allPapers.length; i++) {
+    for (let i = 0; i < allPapers.length; i++) {
 
         pEl = allPapers[i]
 
@@ -136,14 +139,11 @@ function updatePaperDisplay() {
 
     displayTxt = ""
 
-    //clear out input field
-    document.getElementById("input-el").value = ""
-
 }
 
 function updateResearcherDisplay() {
 
-    for (let i = 1; i < allResearchers.length; i++) {
+    for (let i = 0; i < allResearchers.length; i++) {
         rEl = allResearchers[i]
         displayTxt += `
             <li>
@@ -159,9 +159,6 @@ function updateResearcherDisplay() {
     localStorage.allResearchers = JSON.stringify(allResearchers)
 
     displayTxt = ""
-
-    //clear out input field
-    document.getElementById("input-el").value = ""
 
 }
 
