@@ -1,11 +1,28 @@
-let allPapers = []
-let allResearchers = []
 let tempAr = []
 
 let currentPaper = ""
 let currentResearcher = ""
 
 let displayTxt = ""
+
+function start() {
+
+    if (localStorage.getItem("allPapers") === null) {
+        localStorage.allPapers = JSON.stringify(["init"])
+    }
+
+    if (localStorage.getItem("allResearchers") === null) {
+        localStorage.allResearchers = JSON.stringify(["init"])
+    }
+}
+
+start()
+
+let allPapers = JSON.parse(localStorage.allPapers)
+console.log(allPapers)
+let allResearchers = JSON.parse(localStorage.allResearchers)
+updatePaperDisplay()
+updateResearcherDisplay()
 
 const savePaper = document.getElementById("save-paper-btn")
 
@@ -83,18 +100,27 @@ removeResearcher.addEventListener("click", function() {
 
 function updatePaperDisplay() {
 
+    console.log(allPapers[0])
+
     allPapers.forEach((pEl) => {
 
-        displayTxt += `
-        <li>
-            <a target='_blank' href='${pEl}'>
-                ${pEl}
-            </a>
-        </li>`
+        if (pEl !== "init") {
+
+            displayTxt += `
+                <li>
+                    <a target='_blank' href='${pEl}'>
+                        ${pEl}
+                    </a>
+                </li>`
+
+        }
 
     });
 
     document.getElementById("display-papers").innerHTML = "Papers To Read\n" + displayTxt
+
+    // update local storage
+    localStorage.allPapers = JSON.stringify(allPapers)
 
     displayTxt = ""
 
@@ -107,16 +133,23 @@ function updateResearcherDisplay() {
 
     allResearchers.forEach((rEl) => {
 
-        displayTxt += `
-        <li>
-            <a target='_blank' href='${rEl}'>
-                ${rEl}
-            </a>
-        </li>`
+        if (rEl !== "init") {
+
+            displayTxt += `
+                <li>
+                    <a target='_blank' href='${rEl}'>
+                        ${rEl}
+                    </a>
+                </li>`
+
+        }
 
     });
 
     document.getElementById("display-researchers").innerHTML = "Researchers You Follow\n" + displayTxt
+
+    // update local storage
+    localStorage.allResearchers = JSON.stringify(allResearchers)
 
     displayTxt = ""
 

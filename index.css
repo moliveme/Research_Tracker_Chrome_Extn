@@ -4,7 +4,7 @@ body {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: antiquewhite;
-    min-width: 604px;
+    min-width: 737px;
 }
 
 input {
@@ -20,27 +20,29 @@ input {
 }
 
 .save {
-    background: rgb(151, 206, 151);
-    color: rgb(28, 64, 57);
+    background: rgb(188, 212, 201);
+    color: rgb(21, 50, 37);
     padding: 10px 20px;
     border: none;
     font-weight: bold;
     border-radius: 20px;
+    width: 49%;
 }
 
 .remove {
-    background: rgb(28, 64, 57);
-    color: rgb(151, 206, 151);
+    background: rgb(21, 50, 37);
+    color: rgb(188, 212, 201);
     padding: 10px 20px;
     border: none;
     font-weight: bold;
     border-radius: 20px;
+    width: 49%;
 }
 
 #remove-all-btn {
 
-    background: rgb(28, 64, 57);
-    color: rgb(151, 206, 151);
+    background: rgb(21, 50, 37);
+    color: rgb(188, 212, 201);
     padding: 10px 20px;
     border: none;
     font-weight: bold;
@@ -76,10 +78,10 @@ input {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 10px;
-    background-color: rgb(135, 169, 135);
+    background-color: rgb(234, 219, 200);
     overflow: scroll;
     border-radius: 10px;
-    color: rgb(247, 241, 233);
+    color: rgb(21, 50, 37);
 }
 
 ul {
@@ -87,7 +89,7 @@ ul {
 }
 
 a {
-    color: rgb(28, 64, 57);
+    color: rgb(21, 50, 37);
 }
 
 #bottom-flex {
