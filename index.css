@@ -85,3 +85,14 @@ a {
 #bottom-flex {
     display: flex;
 }
+
+input {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 93.9%;
+    border-radius: 5px;
+    border: 1px solid rgb(200, 187, 169);
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+}

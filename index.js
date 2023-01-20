@@ -31,14 +31,18 @@ savePaper.addEventListener("click", function() {
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
+        let paperName = document.getElementById("paperName-input")
+
         currentPaper = tabs[0].url
         console.log(currentPaper)
 
         console.log(allPapers)
-        allPapers.push(currentPaper)
+        allPapers.push([currentPaper, paperName.value])
         console.log(allPapers)
     
         updatePaperDisplay()
+
+        paperName.value = ""
 
     })
 
@@ -50,14 +54,19 @@ saveResearcher.addEventListener("click", function() {
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
+        let resName = document.getElementById("resName-input")
+        console.log(resName.value)
+
         currentResearcher = tabs[0].url
         console.log(currentResearcher)
 
         console.log(allResearchers)
-        allResearchers.push(currentResearcher)
+        allResearchers.push([currentResearcher, resName.value])
         console.log(allResearchers)
     
         updateResearcherDisplay()
+
+        paperName.value = ""
 
     })
 
@@ -72,7 +81,9 @@ removePaper.addEventListener("click", function() {
         currentPaper = tabs[0].url
 
         for (let i = 0; i < allPapers.length; i++) {
-            if (currentPaper === allPapers[i]) {
+            if (currentPaper === allPapers[i][0]) {
+
+                console.log(allPapers[i][0])
     
                 continue
     
@@ -99,7 +110,7 @@ removeResearcher.addEventListener("click", function() {
         currentResearcher = tabs[0].url
 
         for (let i = 0; i < allResearchers.length; i++) {
-            if (currentResearcher === allResearchers[i]) {
+            if (currentResearcher === allResearchers[i][0]) {
     
                 continue
     
@@ -123,10 +134,16 @@ function updatePaperDisplay() {
 
         pEl = allPapers[i]
 
+        if (pEl[1] === "") { // if no name entered, set name to url
+            allPapers[i][1] = pEl[0]
+        }
+
+        pEl = allPapers[i] // update pEl
+
         displayTxt += `
             <li>
-                <a target='_blank' href='${pEl}'>
-                    ${pEl}
+                <a target='_blank' href='${pEl[0]}'>
+                    ${pEl[1]}
                 </a>
             </li>`
 
@@ -144,11 +161,19 @@ function updatePaperDisplay() {
 function updateResearcherDisplay() {
 
     for (let i = 0; i < allResearchers.length; i++) {
+
         rEl = allResearchers[i]
+
+        if (rEl[1] === "") { // if no name entered, set name to url
+            allResearchers[i][1] = rEl[0]
+        }
+
+        rEl = allResearchers[i] // update rEl
+
         displayTxt += `
             <li>
-                <a target='_blank' href='${rEl}'>
-                    ${rEl}
+                <a target='_blank' href='${rEl[0]}'>
+                    ${rEl[1]}
                 </a>
             </li>`
     }
