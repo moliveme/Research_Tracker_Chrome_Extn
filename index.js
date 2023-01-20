@@ -3,6 +3,8 @@ let tempAr = []
 let currentPaper = ""
 let currentResearcher = ""
 
+let recentDelete
+
 let displayTxt = ""
 
 let pEl, rEl
@@ -191,6 +193,7 @@ const removeAll = document.getElementById("remove-all-btn")
 
 removeAll.addEventListener("click", function() {
 
+    recentDelete = [allPapers, allResearchers]
     allPapers = []
     allResearchers = []
     updatePaperDisplay()
