@@ -74,10 +74,12 @@ body {
 
 ul {
     padding-left: 20px;
+    font-size: 15px;
 }
 
 a {
     color: rgb(21, 50, 37);
+    font-size: 15px;
 }
 
 #bottom-flex {
