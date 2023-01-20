@@ -66,7 +66,7 @@ saveResearcher.addEventListener("click", function() {
     
         updateResearcherDisplay()
 
-        paperName.value = ""
+        resName.value = ""
 
     })
 
